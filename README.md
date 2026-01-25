@@ -1,6 +1,6 @@
 # Wavelet Interface Network (WIN) for Audio Deepfake Detection
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red)
 ![Kaggle](https://img.shields.io/badge/Kaggle-Notebook%20Ready-20BEFF)
 

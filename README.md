@@ -1,6 +1,6 @@
 # Wavelet Interface Network (WIN) for Audio Deepfake Detection
 
-![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
+![Python(Preferred)](https://img.shields.io/badge/Python-3.12%2B-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red)
 ![Kaggle](https://img.shields.io/badge/Kaggle-Notebook%20Ready-20BEFF)
 
@@ -11,7 +11,7 @@ The proposed model integrates signal preprocessing, learnable Sinc-based fronten
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 ```
 bump-waveformer/
 │
@@ -43,7 +43,7 @@ bump-waveformer/
 ```
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 Install dependencies:
 
@@ -59,7 +59,7 @@ pip install torchinfo fvcore
 
 ---
 
-## 📊 Dataset Structure
+## Dataset Structure
 
 Organize your dataset as:
 
@@ -80,7 +80,7 @@ Update paths in `config.py`.
 
 ---
 
-## 🚀 Training
+## Training
 
 Run training:
 
@@ -92,7 +92,7 @@ The best model is saved automatically.
 
 ---
 
-## 🧪 Testing
+## Testing
 
 Run evaluation:
 
@@ -104,7 +104,7 @@ Outputs final EER and min-tDCF.
 
 ---
 
-## 🔍 Sanity Check
+## Sanity Check
 
 Verify forward pass:
 
@@ -114,7 +114,7 @@ python tests/test_forward.py
 
 ---
 
-## 📐 Model Complexity
+## Model Complexity
 
 Check parameters and FLOPs:
 
@@ -124,7 +124,7 @@ python model_info.py
 
 ---
 
-## 🧠 Model Architecture
+## Model Architecture
 
 Pipeline:
 
@@ -146,7 +146,7 @@ Classifier
 
 ---
 
-## 📈 Evaluation Metrics
+## Evaluation Metrics
 
 * Equal Error Rate (EER)
 * Tandem Detection Cost Function (t-DCF)
@@ -155,7 +155,7 @@ Implemented in `utils/metrics.py`.
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 All hyperparameters are in:
 
@@ -167,7 +167,7 @@ Modify for experiments.
 
 ---
 
-## 💾 Checkpoints
+## Checkpoints
 
 Saved at:
 
@@ -177,7 +177,7 @@ Waveformer.pth
 
 ---
 
-## 📄 Citation
+## Citation
 
 If you use this work, please cite:
 
@@ -192,13 +192,13 @@ If you use this work, please cite:
 
 ---
 
-## 📜 License
+## License
 
 For academic and research use only.
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 * ASVspoof Challenge
 * PyTorch
@@ -208,7 +208,7 @@ For academic and research use only.
 
 ---
 
-## 📬 Contact
+## Contact
 
-Author: Your Name
-Email: [202521004@dau.ac.in](mailto:202521004@dau.ac.in)
+Authors: Arth J. Shah, Aniket Pandey, Hemant A. Patil
+Email: [202521004@dau.ac.in](mailto:202521004@dau.ac.in), [202411001@dau.ac.in](mailto:202411001@dau.ac.in)

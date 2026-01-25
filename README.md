@@ -17,7 +17,7 @@ bump-waveformer/
 │
 ├── train.py              # Training script
 ├── test.py               # Testing / evaluation
-├── model_info.py         # Parameter & FLOPs analysis
+├── model_info.py   (optional, requires optional library installation)      # Parameter & FLOPs analysis 
 │
 ├── config.py             # Configuration
 ├── requirements.txt      # Dependencies

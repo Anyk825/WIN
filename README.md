@@ -22,7 +22,7 @@ The proposed model integrates signal preprocessing, learnable Sinc-based fronten
 ---
 
 ## 📁 Project Structure
-
+```
 bump-waveformer/
 │
 ├── train.py              # Training script
@@ -50,8 +50,7 @@ bump-waveformer/
 │   └── test_forward.py
 │
 └── README.md
-
-
+```
 ---
 
 ## ⚙️ Requirements
@@ -222,29 +221,4 @@ For academic and research use only.
 ## 📬 Contact
 
 Author: Your Name
-Email: [your.email@domain.com](mailto:your.email@domain.com)
-
-```
-
----
-
-## ✅ Why This Will Now Work
-
-This version:
-
-✔ Removes broken `---` placement  
-✔ Avoids nested separators  
-✔ Uses standard GitHub Markdown  
-✔ Fixes heading spacing  
-✔ Fixes tree alignment  
-✔ Renders correctly on GitHub
-
-No more weird section breaks like in your screenshot.
-
----
-
-If you want, next I can help you make:
-
-👉 a **badge section** (GitHub stars, PyTorch version, paper link)  
-👉 or an **official paper link section** for submission.
-```
+Email: [202521004@dau.ac.in](mailto:202521004@dau.ac.in)

@@ -1,5 +1,9 @@
 # Wavelet Interface Network (WIN) for Audio Deepfake Detection
 
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red)
+![Kaggle](https://img.shields.io/badge/Kaggle-Notebook%20Ready-20BEFF)
+
 This repository contains the official implementation of the **Wavelet Interface Network (WIN)** for audio deepfake detection using wavelet-based feature mapping and transformer-style modeling.
 
 The proposed model integrates signal preprocessing, learnable Sinc-based frontend, positional aggregation, and wavelet-based attention for robust anti-spoofing.

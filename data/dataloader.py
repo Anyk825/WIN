@@ -17,24 +17,9 @@ from config import sys_cfg, exp_cfg
 # ASVSpoof Folder Dataset
 # ============================================================
 
-class ASVspoofFolderDataset(Dataset):
-    """
-    Loads audio files from:
-        root/
-          ├── bonafide/
-          └── spoof/
+class ASVspoofFolderDataset(torch.utils.data.Dataset):
 
-    Returns:
-        waveform: (T,)
-        label: float (1 = bonafide, 0 = spoof)
-    """
-
-    def __init__(
-        self,
-        root_dir: str,
-        sample_rate: int = 16000,
-        duration_sec: int = 4,
-    ):
+    def __init__(self, root_dir, sample_rate=16000, duration_sec=4):
 
         self.root_dir = root_dir
         self.sample_rate = sample_rate
@@ -43,78 +28,30 @@ class ASVspoofFolderDataset(Dataset):
         self.audio_paths = []
         self.labels = []
 
-        self._load_files()
-
-
-    def _load_files(self):
 
         for label_name, label_value in [("bonafide", 1), ("spoof", 0)]:
 
-            class_dir = os.path.join(self.root_dir, label_name)
+            class_dir = os.path.join(root_dir, label_name)
 
-            if not os.path.exists(class_dir):
-                continue
+            if os.path.exists(class_dir):
 
-            for file in os.listdir(class_dir):
+                for file in os.listdir(class_dir):
 
-                if file.endswith((".flac", ".wav")):
+                    if file.endswith((".wav", ".flac")):
 
-                    path = os.path.join(class_dir, file)
+                        self.audio_paths.append(
+                            os.path.join(class_dir, file)
+                        )
 
-                    self.audio_paths.append(path)
-                    self.labels.append(label_value)
+                        self.labels.append(label_value)
 
-        print(f"📁 Loaded {len(self.audio_paths)} files from {self.root_dir}")
+
+        print(f"📁 Loaded {len(self.audio_paths)} files from {root_dir}")
 
 
     def __len__(self):
+
         return len(self.audio_paths)
-
-
-    def _load_audio(self, path):
-
-        # FLAC → soundfile
-        if path.lower().endswith(".flac"):
-
-            wav_np, sr = sf.read(path)
-
-            if wav_np.ndim > 1:
-                wav_np = wav_np.mean(axis=1)
-
-            wav = torch.tensor(
-                wav_np, dtype=torch.float32
-            ).unsqueeze(0)
-
-        # WAV → torchaudio
-        else:
-
-            wav, sr = torchaudio.load(path)
-
-        return wav, sr
-
-
-    def _fix_length(self, wav):
-
-        num_samples = int(self.sample_rate * self.duration_sec)
-
-        # Crop
-        if wav.size(1) > num_samples:
-
-            start = random.randint(
-                0, wav.size(1) - num_samples
-            )
-
-            wav = wav[:, start:start + num_samples]
-
-        # Pad
-        elif wav.size(1) < num_samples:
-
-            wav = F.pad(
-                wav,
-                (0, num_samples - wav.size(1))
-            )
-
-        return wav
 
 
     def __getitem__(self, idx):
@@ -126,17 +63,50 @@ class ASVspoofFolderDataset(Dataset):
             dtype=torch.float32
         )
 
-        wav, sr = self._load_audio(path)
+
+        # Load audio
+        wav, sr = torchaudio.load(path)   # (C, T)
+
+
+        # Convert to mono
+        if wav.size(0) > 1:
+
+            wav = wav.mean(dim=0, keepdim=True)
+
 
         # Resample
         if sr != self.sample_rate:
 
             wav = torchaudio.functional.resample(
-                wav, sr, self.sample_rate
+                wav,
+                sr,
+                self.sample_rate,
             )
 
+
         # Crop / Pad
-        wav = self._fix_length(wav)
+        num_samples = int(
+            self.sample_rate * self.duration_sec
+        )
+
+
+        if wav.size(1) > num_samples:
+
+            start = random.randint(
+                0,
+                wav.size(1) - num_samples
+            )
+
+            wav = wav[:, start:start + num_samples]
+
+
+        elif wav.size(1) < num_samples:
+
+            wav = F.pad(
+                wav,
+                (0, num_samples - wav.size(1)),
+            )
+
 
         return wav.squeeze(0), label
 

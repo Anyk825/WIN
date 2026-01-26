@@ -136,9 +136,8 @@ Two complementary implementations are provided:
    - Located in `Notebooks/Backend/`
    - Used for initial experimentation and result generation
    - Suitable for interactive analysis and visualization.
+2. **For modular Python implementation please follow below steps**
 
----
-For modular Python implementation please follow below steps
 ---
 
 ## Training

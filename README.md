@@ -171,7 +171,7 @@ Modify for experiments.
 Saved at:
 
 ```
-Waveformer.pth
+WIN.pth
 ```
 
 ---

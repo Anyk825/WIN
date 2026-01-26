@@ -74,12 +74,16 @@ pip install torchinfo fvcore
 ```
 
 ---
-
 ## Dataset Structure
 
-Organize your dataset as:
+This project supports ASVspoof 2019 and ASVspoof 2021 (LA) datasets.
+
+### Required Format
+
+Datasets must be organized as:
 
 ```
+
 dataset_root/
 ├── train/
 │   ├── bonafide/
@@ -88,11 +92,27 @@ dataset_root/
 │   ├── bonafide/
 │   └── spoof/
 └── test/
-    ├── bonafide/
-    └── spoof/
-```
-Update dataset paths in `config.py`.
+├── bonafide/
+└── spoof/
 
+```
+
+Update paths in `config.py` accordingly if using python.
+
+The `Dataset_Formation/` directory provides scripts to automatically organize ASVspoof 2019 and ASVspoof 2021 (LA) datasets into the required format once downloaded zip (from original ASVSpoof website) and extracted. Users are recommended to use these scripts for consistency.
+
+# Preprocessed Datasets zip download (Kaggle.com)
+
+Ready-to-use datasets are available on Kaggle:
+
+- ASVspoof 2021 (LA):  
+  https://www.kaggle.com/datasets/artharking/asv-2021-la-test
+
+- ASVspoof 2019 (AA):  
+  https://www.kaggle.com/datasets/artharking/asv-19-aa
+
+These can be used directly without additional preprocessing.
+```
 ---
 
 ## Reproducibility and Jupyter Notebooks

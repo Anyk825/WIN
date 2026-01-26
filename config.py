@@ -11,7 +11,7 @@ except Exception:
 
 # ------------------ Model Checkpoint ------------------ #
 
-SAVE_PATH = "/kaggle/working/Waveformer.pth"
+SAVE_PATH = "/kaggle/working/WIN.pth"
 
 
 # ------------------ System / Dataset Paths ------------------ #

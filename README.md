@@ -4,31 +4,11 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red)
 ![Kaggle](https://img.shields.io/badge/Kaggle-Notebook%20Ready-20BEFF)
 
-This repository contains the official implementation of the **Wavelet Interface Network (WIN)** for audio deepfake detection using wavelet-based feature mapping and transformer-style modeling.
-
-The proposed model integrates signal preprocessing, learnable Sinc-based frontend, positional aggregation, and multi-wavelet attention for robust anti-spoofing.
-
-The framework supports multiple analytic wavelet families, enabling systematic ablation and comparative analysis.
+This repository contains the official implementation of the **Wavelet Integrated Network (WIN)** originally applied for Audio Deepfake Detection using wavelet-based feature mapping modeling.
 
 ---
 
-## 📌 Key Features
-
-- End-to-end learning from raw waveform
-- Pre-emphasis filtering
-- Sinc-based convolutional frontend
-- CNN feature extraction
-- Positional encoding
-- Multi-wavelet attention mechanism
-- Transformer-style encoder
-- Attention-based sequence pooling
-- Support for multiple wavelet families
-- EER and t-DCF evaluation
-- FLOPs and parameter analysis
-
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 
@@ -64,7 +44,7 @@ WIN/
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 Install dependencies:
 
@@ -80,7 +60,7 @@ pip install torchinfo fvcore
 
 ---
 
-## 📊 Dataset Structure
+## Dataset Structure
 
 Organize your dataset as:
 
@@ -101,7 +81,7 @@ Update dataset paths in `config.py`.
 
 ---
 
-## 🚀 Training
+## Training
 
 Run training:
 
@@ -113,7 +93,7 @@ The best model is saved automatically based on validation EER.
 
 ---
 
-## 🧪 Testing
+## Testing
 
 Run evaluation:
 
@@ -124,11 +104,10 @@ python test.py
 Outputs:
 
 * Final EER
-* Minimum t-DCF
 
 ---
 
-## 🔍 Sanity Check
+## Sanity Check
 
 Verify forward pass and architecture:
 
@@ -140,7 +119,7 @@ This performs a dummy inference to validate model consistency.
 
 ---
 
-## 📐 Model Complexity
+## Model Complexity
 
 Check parameters and FLOPs:
 
@@ -159,7 +138,7 @@ This reports:
 
 ---
 
-## 🧠 Model Architecture
+## Model Architecture
 
 The overall processing pipeline is:
 
@@ -181,27 +160,27 @@ Classifier
 
 ---
 
-## 🌊 Supported Wavelet Families
+## Supported Wavelet Families
 
-The Wavelet-FAN attention module supports the following wavelet types:
+The Wavelet feature maps in `WIN_classifier.py` module supports the following wavelet types:
 
 | Config Name | Wavelet Family               |
 | ----------- | ---------------------------- |
 | bump        | Bump Wavelet                 |
 | morlet      | Morlet Wavelet               |
 | dog         | Derivative of Gaussian (DoG) |
-| mexican     | Mexican Hat (Ricker)         |
-| morse       | Generalized Morse            |
+| mex_h       | Mexican Hat (Ricker)         |
+| morse       | Generalized Morse Wavelet    |
 
 Wavelet type can be selected in `config.py`:
 
 ```python
-WAVELET_TYPE = "bump"   # default
+WAVELET_TYPE = "bump"   # default bump ["bump", "morlet", "dog", "morse", "mex_h"]
 ```
 
 ---
 
-## 📈 Evaluation Metrics
+## Evaluation Metrics
 
 The following metrics are used:
 
@@ -212,7 +191,7 @@ Implemented in `utils/metrics.py`.
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 All hyperparameters and experiment settings are defined in:
 
@@ -231,7 +210,7 @@ Modify this file to conduct different experiments.
 
 ---
 
-## 💾 Checkpoints
+## Checkpoints
 
 Trained models are saved at:
 
@@ -243,7 +222,7 @@ Defined in `config.py` as `SAVE_PATH`.
 
 ---
 
-## 📄 Citation
+## Citation
 
 If you use this work in your research, please cite:
 
@@ -255,12 +234,9 @@ If you use this work in your research, please cite:
   year={2026}
 }
 ```
-
-(Replace with the final publication details.)
-
 ---
 
-## 📜 License
+## License
 
 This project is intended for academic and research use only.
 
@@ -270,11 +246,8 @@ For commercial usage, please contact the authors.
 
 ## 🙏 Acknowledgements
 
-* ASVspoof Challenge
-* PyTorch
-* torchaudio
-* fvcore
-* torchinfo
+* xxx
+* yyy
 
 ---
 
@@ -288,7 +261,3 @@ Hemant A. Patil
 Email:
 [202521004@dau.ac.in](mailto:202521004@dau.ac.in)
 [202411001@dau.ac.in](mailto:202411001@dau.ac.in)
-
-```
-If you’d like, next I can help you prepare a **“Reproducibility Checklist” section** for top-tier conferences/journals.
-```

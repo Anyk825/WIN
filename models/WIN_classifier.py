@@ -175,6 +175,42 @@ class MorseWavelet(BaseWaveletFAN):
             (1 - gate) * g
         ], dim=-1)
 
+# ============================================================
+# Mexican Hat (Ricker) Wavelet
+# ============================================================
+
+class MexicanHatWavelet(BaseWaveletFAN):
+    """
+    Mexican-Hat (Ricker) Wavelet FAN (SAFE)
+    """
+
+    def forward(self, x):
+
+        z = self.linear_p(x)
+        g = self.content_branch(x)
+
+        s = torch.exp(self.log_scale) + 1e-4
+        u = z / s
+
+
+        # ---- Mexican Hat (Ricker) Wavelet ----
+        # ψ(u) = (1 - u^2) * exp(-u^2 / 2)
+
+        wavelet = (1.0 - u**2) * torch.exp(-0.5 * u**2)
+
+
+        # Normalize
+        wavelet = wavelet / (
+            wavelet.std(dim=-1, keepdim=True) + 1e-5
+        )
+
+
+        gate = torch.sigmoid(self.gate)
+
+        return torch.cat([
+            gate * wavelet,
+            (1 - gate) * g
+        ], dim=-1)
 
 # ============================================================
 # Wavelet Factory
@@ -196,7 +232,10 @@ def get_wavelet_map(name: str, d_head: int):
 
     elif name == "morse":
         return MorseWavelet(d_head)
-
+        
+    elif name ==  "mex_h":
+        return MexicanHatWavelet(d_head)
+        
     else:
         raise ValueError(
             f"Unknown wavelet type: {name}"

@@ -40,7 +40,9 @@ def main():
         transformer_hidden=exp_cfg.TRANSFORMER_HIDDEN,
         n_encoder=2,
         C=64,
+        wavelet_type=exp_cfg.WAVELET_TYPE,
     ).to(device)
+
 
 
     # ---------------- Pre-Emphasis ---------------- #

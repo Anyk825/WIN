@@ -210,11 +210,11 @@ Sinc + CNN Frontend
    ↓
 Positional Encoding
    ↓
-Multi-Wavelet Transformer
+Multi-Wavelet Classifier
    ↓
 Sequence Pooling
    ↓
-Classifier
+Classification
 ```
 
 ---
@@ -244,7 +244,8 @@ WAVELET_TYPE = "bump"   # default bump ["bump", "morlet", "dog", "morse", "mex_h
 The following metrics are used:
 
 * Equal Error Rate (EER)
-* Tandem Detection Cost Function (t-DCF)
+* Tandem Detection Cost Function (t-DCF)  
+Employing t-DCF for CM task would give value 1, as t-DCF is not employed for CM task, we in future plan to extend system for End-to-End ASV system.
 
 Implemented in `utils/metrics.py`.
 

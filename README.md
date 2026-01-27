@@ -93,8 +93,8 @@ dataset_root/
 │   ├── bonafide/
 │   └── spoof/
 └── test/
-├── bonafide/
-└── spoof/
+│   ├── bonafide/
+│   └── spoof/
 
 ```
 
